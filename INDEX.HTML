@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grupo de Folclore · Calendário de Atividades</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --terracotta: #c0523a;
+      --terracotta-dark: #8f3624;
+      --gold: #c9962a;
+      --gold-light: #e8c46a;
+      --green: #2d5a3d;
+      --green-light: #4a8560;
+      --cream: #f5ede0;
+      --cream-dark: #e8d9c4;
+      --brown: #3d2b1a;
+      --brown-mid: #6b4226;
+      --white: #fdf8f1;
+      --shadow: rgba(61,43,26,0.15);
+      --shadow-strong: rgba(61,43,26,0.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--brown);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── PATTERN BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(192,82,58,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(45,90,61,0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      background: linear-gradient(160deg, var(--terracotta-dark) 0%, var(--terracotta) 50%, var(--brown-mid) 100%);
+      color: var(--cream);
+      padding: 0;
+      overflow: hidden;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .header-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z M30 10 L50 30 L30 50 L10 30 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-size: 60px 60px;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 40px 40px;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .header-emblem {
+      font-size: 52px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+      animation: floatIn 0.8s ease both;
+    }
+
+    .header-badge {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(0,0,0,0.2);
+      padding: 4px 16px;
+      border: 1px solid rgba(232,196,106,0.4);
+      border-radius: 2px;
+      animation: floatIn 0.8s 0.1s ease both;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+      animation: floatIn 0.8s 0.2s ease both;
+    }
+
+    .header-sub {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--cream-dark);
+      opacity: 0.9;
+      animation: floatIn 0.8s 0.3s ease both;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      background: rgba(0,0,0,0.2);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      cursor: pointer;
+      opacity: 0.75;
+      transition: all 0.25s ease;
+      border-bottom: 3px solid transparent;
+      position: relative;
+    }
+
+    nav button:hover { opacity: 1; background: rgba(255,255,255,0.07); }
+    nav button.active {
+      opacity: 1;
+      border-bottom-color: var(--gold-light);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ── MAIN ── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── ORNAMENT ── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 36px;
+    }
+
+    .ornament-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .ornament-icon {
+      font-size: 22px;
+      color: var(--gold);
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      color: var(--terracotta-dark);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title .icon { font-size: 1.4rem; }
+
+    /* ── VIEW TOGGLE ── */
+    .view-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .toggle-group {
+      display: flex;
+      background: var(--cream-dark);
+      border-radius: 6px;
+      padding: 3px;
+      gap: 3px;
+      border: 1px solid rgba(61,43,26,0.12);
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      font-family: 'EB Garamond', serif;
+      font-size: 15px;
+      padding: 7px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      color: var(--brown-mid);
+      transition: all 0.2s;
+    }
+
+    .toggle-btn.active {
+      background: var(--terracotta);
+      color: white;
+      box-shadow: 0 2px 6px var(--shadow);
+    }
+
+    /* ── CALENDAR ── */
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .cal-nav-btn {
+      background: var(--cream-dark);
+      border: 1px solid rgba(61,43,26,0.15);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--brown);
+      transition: all 0.2s;
+    }
+
+    .cal-nav-btn:hover {
+      background: var(--terracotta);
+      color: white;
+      border-color: var(--terracotta);
+    }
+
+    .cal-month-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--terracotta-dark);
+      text-transform: capitalize;
+    }
+
+    .calendar-grid {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+      border: 1px solid var(--cream-dark);
+    }
+
+    .cal-days-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: var(--terracotta);
+    }
+
+    .cal-day-name {
+      text-align: center;
+      padding: 12px 4px;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: white;
+      opacity: 0.9;
+    }
+
+    .cal-body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background: var(--cream-dark);
+    }
+
+    .cal-cell {
+      background: var(--white);
+      min-height: 80px;
+      padding: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      position: relative;
+    }
+
+    .cal-cell:hover { background: #fdf0e8; }
+
+    .cal-cell.other-month .cal-date { opacity: 0.3; }
+    .cal-cell.today .cal-date {
+      background: var(--terracotta);
+      color: white;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .cal-date {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brown-mid);
+      margin-bottom: 4px;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .cal-event-dot {
+      display: block;
+      font-size: 11px;
+      background: var(--terracotta);
+      color: white;
+      border-radius: 3px;
+      padding: 2px 5px;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+      cursor: pointer;
+    }
+
+    .cal-event-dot.tipo-ensaio { background: var(--green); }
+    .cal-event-dot.tipo-atuacao { background: var(--terracotta); }
+    .cal-event-dot.tipo-reuniao { background: var(--gold); color: var(--brown); }
+    .cal-event-dot.tipo-outro { background: var(--brown-mid); }
+
+    /* ── LISTA DE EVENTOS ── */
+    .events-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .event-card {
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid var(--cream-dark);
+      border-left: 5px solid var(--terracotta);
+      padding: 20px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      box-shadow: 0 2px 10px var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: slideIn 0.35s ease both;
+    }
+
+    .event-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px var(--shadow-strong);
+    }
+
+    .event-card.tipo-ensaio { border-left-color: var(--green); }
+    .event-card.tipo-reuniao { border-left-color: var(--gold); }
+    .event-card.tipo-outro { border-left-color: var(--brown-mid); }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-12px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .event-date-block {
+      min-width: 64px;
+      text-align: center;
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 10px 8px;
+      border: 1px solid var(--cream-dark);
+    }
+
+    .event-date-day {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--terracotta);
+    }
+
+    .event-date-month {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+    }
+
+    .event-info { flex: 1; }
+
+    .event-tipo {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 4px;
+    }
+
+    .event-card.tipo-ensaio .event-tipo { color: var(--green); }
+    .event-card.tipo-reuniao .event-tipo { color: var(--gold); }
+
+    .event-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+
+    .event-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.9rem;
+      color: var(--brown-mid);
+      flex-wrap: wrap;
+    }
+
+    .event-meta span { display: flex; align-items: center; gap: 5px; }
+
+    .event-desc {
+      margin-top: 8px;
+      font-style: italic;
+      color: var(--brown-mid);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--cream-dark);
+      padding-top: 8px;
+    }
+
+    .event-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .btn-icon {
+      background: none;
+      border: 1px solid var(--cream-dark);
+      border-radius: 6px;
+      width: 34px; height: 34px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      color: var(--brown-mid);
+      transition: all 0.2s;
+    }
+
+    .btn-icon:hover { background: var(--terracotta); color: white; border-color: var(--terracotta); }
+    .btn-icon.del:hover { background: #c0392b; border-color: #c0392b; }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--brown-mid);
+    }
+
+    .empty-state .emoji { font-size: 3rem; margin-bottom: 12px; }
+    .empty-state p { font-style: italic; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(61,43,26,0.55);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 36px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border: 1px solid var(--cream-dark);
+      position: relative;
+      animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.88) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--terracotta-dark);
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--cream-dark);
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: 50%;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--brown-mid);
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover { background: var(--terracotta); color: white; }
+
+    .form-group { margin-bottom: 18px; }
+
+    label {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      margin-bottom: 7px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--cream-dark);
+      border-radius: 7px;
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      color: var(--brown);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px rgba(192,82,58,0.12);
+      background: var(--white);
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+      color: white;
+      box-shadow: 0 4px 14px rgba(192,82,58,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(192,82,58,0.45);
+    }
+
+    .btn-secondary {
+      background: var(--cream-dark);
+      color: var(--brown-mid);
+      border: 1px solid rgba(61,43,26,0.15);
+    }
+
+    .btn-secondary:hover { background: var(--cream); }
+
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+
+    /* ── ADD FAB ── */
+    .fab {
+      position: fixed;
+      bottom: 36px;
+      right: 36px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+      color: white;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(192,82,58,0.45);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s;
+      z-index: 100;
+    }
+
+    .fab:hover {
+      transform: scale(1.1) rotate(90deg);
+      box-shadow: 0 8px 32px rgba(192,82,58,0.55);
+    }
+
+    /* ── LEGENDA ── */
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 14px;
+      color: var(--brown-mid);
+    }
+
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+    }
+
+    /* ── SOBRE ── */
+    .about-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 36px;
+      border: 1px solid var(--cream-dark);
+      box-shadow: 0 4px 20px var(--shadow);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--terracotta-dark);
+      margin-bottom: 16px;
+    }
+
+    .about-card p {
+      margin-bottom: 14px;
+      line-height: 1.75;
+      color: var(--brown-mid);
+    }
+
+    .about-card .highlight {
+      background: var(--cream);
+      border-left: 4px solid var(--gold);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      margin: 20px 0;
+    }
+
+    /* ── FILTER ── */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-chip {
+      background: var(--cream-dark);
+      border: 1px solid rgba(61,43,26,0.15);
+      border-radius: 20px;
+      padding: 5px 15px;
+      font-family: 'EB Garamond', serif;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--brown-mid);
+      transition: all 0.2s;
+    }
+
+    .filter-chip.active {
+      background: var(--terracotta);
+      color: white;
+      border-color: var(--terracotta);
+    }
+
+    .filter-chip:hover:not(.active) { background: var(--cream); }
+
+    /* ── SECTIONS ── */
+    .tab-section { display: none; }
+    .tab-section.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--brown);
+      color: var(--cream-dark);
+      font-size: 14px;
+      border-top: 4px solid var(--gold);
+    }
+
+    footer .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .modal { padding: 24px; }
+      .event-card { flex-direction: column; }
+      nav button { padding: 12px 14px; font-size: 10px; }
+      .fab { bottom: 20px; right: 20px; width: 52px; height: 52px; font-size: 22px; }
+      .cal-cell { min-height: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-pattern"></div>
+  <div class="header-inner">
+    <div class="header-emblem">🌻</div>
+    <div class="header-badge">Grupo de Folclore</div>
+    <h1 id="groupName">Rancho Folclórico</h1>
+    <p class="header-sub" id="groupSub">Preservando as tradições do nosso povo</p>
+  </div>
+  <nav>
+    <button class="active" onclick="showTab('calendario')">📅 Calendário</button>
+    <button onclick="showTab('atividades')">📋 Atividades</button>
+    <button onclick="showTab('sobre')">ℹ️ Sobre</button>
+    <button onclick="showTab('definicoes')">⚙️ Definições</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ── CALENDÁRIO ── -->
+  <section id="tab-calendario" class="tab-section active">
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-icon">❧</div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <div class="view-controls">
+      <div class="calendar-header" style="flex:1; margin-bottom:0">
+        <button class="cal-nav-btn" onclick="changeMonth(-1)">‹</button>
+        <div class="cal-month-label" id="calMonthLabel"></div>
+        <button class="cal-nav-btn" onclick="changeMonth(1)">›</button>
+      </div>
+      <div class="toggle-group">
+        <button class="toggle-btn active" onclick="setCalView('month', this)">Mês</button>
+        <button class="toggle-btn" onclick="setCalView('list', this)">Lista</button>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Ensaio</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--terracotta)"></div> Atuação</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div> Reunião</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--brown-mid)"></div> Outro</div>
+    </div>
+
+    <div id="calView">
+      <div class="calendar-grid">
+        <div class="cal-days-header">
+          <div class="cal-day-name">Dom</div>
+          <div class="cal-day-name">Seg</div>
+          <div class="cal-day-name">Ter</div>
+          <div class="cal-day-name">Qua</div>
+          <div class="cal-day-name">Qui</div>
+          <div class="cal-day-name">Sex</div>
+          <div class="cal-day-name">Sáb</div>
+        </div>
+        <div class="cal-body" id="calBody"></div>
+      </div>
+    </div>
+
+    <div id="listView" style="display:none">
+      <div id="listViewEvents"></div>
+    </div>
+  </section>
+
+  <!-- ── ATIVIDADES ── -->
+  <section id="tab-atividades" class="tab-section">
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-icon">❧</div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <div class="view-controls">
+      <div class="section-title">
+        <span class="icon">📋</span> Todas as Atividades
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-chip active" onclick="filterEvents('todos', this)">Todos</button>
+      <button class="filter-chip" onclick="filterEvents('ensaio', this)">Ensaios</button>
+      <button class="filter-chip" onclick="filterEvents('atuacao', this)">Atuações</button>
+      <button class="filter-chip" onclick="filterEvents('reuniao', this)">Reuniões</button>
+      <button class="filter-chip" onclick="filterEvents('outro', this)">Outros</button>
+    </div>
+
+    <div class="events-list" id="allEventsList"></div>
+  </section>
+
+  <!-- ── SOBRE ── -->
+  <section id="tab-sobre" class="tab-section">
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-icon">❧</div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <div class="about-card">
+      <h2 id="aboutTitle">Sobre o Nosso Grupo</h2>
+      <p id="aboutText1">Bem-vindo ao nosso grupo de folclore! Somos uma associação dedicada à preservação, estudo e divulgação das tradições, músicas e danças populares da nossa região.</p>
+      <div class="highlight">
+        <span id="aboutQuote">"Na dança e no canto, guardamos a memória viva do nosso povo."</span>
+      </div>
+      <p id="aboutText2">O nosso grupo reúne membros de todas as idades, unidos pelo amor à cultura popular portuguesa e ao desejo de a transmitir às gerações futuras.</p>
+      <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="display:flex;align-items:center;gap:10px;color:var(--brown-mid)">
+          <span style="font-size:1.2rem">📍</span> <span id="aboutLocal">Local de ensaio a definir</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;color:var(--brown-mid)">
+          <span style="font-size:1.2rem">📞</span> <span id="aboutContact">Contacto a definir</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;color:var(--brown-mid)">
+          <span style="font-size:1.2rem">📧</span> <span id="aboutEmail">Email a definir</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DEFINIÇÕES ── -->
+  <section id="tab-definicoes" class="tab-section">
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-icon">❧</div>
+      <div class="ornament-line"></div>
+    </div>
+    <div class="about-card">
+      <h2>⚙️ Definições do Grupo</h2>
+      <p style="color:var(--brown-mid);margin-bottom:20px">Personaliza as informações do teu grupo de folclore.</p>
+      <div class="form-group">
+        <label>Nome do Grupo</label>
+        <input type="text" id="settingName" placeholder="Ex: Rancho Folclórico de..."/>
+      </div>
+      <div class="form-group">
+        <label>Subtítulo</label>
+        <input type="text" id="settingSubtitle" placeholder="Ex: Preservando as tradições..."/>
+      </div>
+      <div class="form-group">
+        <label>Texto Sobre o Grupo</label>
+        <textarea id="settingAbout" rows="4" placeholder="Descreve o teu grupo..."></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Local de Ensaio</label>
+          <input type="text" id="settingLocal" placeholder="Morada / local"/>
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="text" id="settingContact" placeholder="+351 ..."/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="settingEmail" placeholder="email@exemplo.pt"/>
+        </div>
+      </div>
+      <div class="modal-actions" style="justify-content:flex-start">
+        <button class="btn btn-primary" onclick="saveSettings()">💾 Guardar Definições</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FAB -->
+<button class="fab" onclick="openModal()" title="Adicionar Atividade">＋</button>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title"><span>🎭</span> <span id="modalTitleText">Nova Atividade</span></div>
+    <input type="hidden" id="editingId"/>
+    <div class="form-group">
+      <label>Título da Atividade</label>
+      <input type="text" id="formTitle" placeholder="Ex: Ensaio Semanal, Atuação na Festa..."/>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" id="formDate"/>
+      </div>
+      <div class="form-group">
+        <label>Hora</label>
+        <input type="time" id="formTime"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Tipo</label>
+        <select id="formTipo">
+          <option value="ensaio">🟢 Ensaio</option>
+          <option value="atuacao">🔴 Atuação</option>
+          <option value="reuniao">🟡 Reunião</option>
+          <option value="outro">⚫ Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Local</label>
+        <input type="text" id="formLocal" placeholder="Ex: Casa do Povo, Praça..."/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Descrição (opcional)</label>
+      <textarea id="formDesc" placeholder="Notas, detalhes adicionais..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="saveEvent()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand" id="footerBrand">Rancho Folclórico</div>
+  <div>Calendário de Atividades · Feito com ♥ para a cultura popular portuguesa</div>
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+
+let events = JSON.parse(localStorage.getItem('folclore_events') || '[]');
+let settings = JSON.parse(localStorage.getItem('folclore_settings') || 'null') || {
+  name: 'Rancho Folclórico',
+  subtitle: 'Preservando as tradições do nosso povo',
+  about: 'Bem-vindo ao nosso grupo de folclore! Somos uma associação dedicada à preservação, estudo e divulgação das tradições, músicas e danças populares da nossa região.',
+  local: 'Local de ensaio a definir',
+  contact: 'Contacto a definir',
+  email: 'Email a definir'
+};
+
+let currentDate = new Date();
+let currentView = 'month';
+let currentFilter = 'todos';
+
+// ─── SETTINGS ───────────────────────────────────────────────────────────────
+
+function applySettings() {
+  document.getElementById('groupName').textContent = settings.name;
+  document.getElementById('groupSub').textContent = settings.subtitle;
+  document.getElementById('aboutTitle').textContent = 'Sobre ' + settings.name;
+  document.getElementById('aboutText1').textContent = settings.about;
+  document.getElementById('aboutLocal').textContent = settings.local;
+  document.getElementById('aboutContact').textContent = settings.contact;
+  document.getElementById('aboutEmail').textContent = settings.email;
+  document.getElementById('footerBrand').textContent = settings.name;
+  document.title = settings.name + ' · Calendário';
+  // populate settings form
+  document.getElementById('settingName').value = settings.name;
+  document.getElementById('settingSubtitle').value = settings.subtitle;
+  document.getElementById('settingAbout').value = settings.about;
+  document.getElementById('settingLocal').value = settings.local;
+  document.getElementById('settingContact').value = settings.contact;
+  document.getElementById('settingEmail').value = settings.email;
+}
+
+function saveSettings() {
+  settings.name = document.getElementById('settingName').value || settings.name;
+  settings.subtitle = document.getElementById('settingSubtitle').value || settings.subtitle;
+  settings.about = document.getElementById('settingAbout').value || settings.about;
+  settings.local = document.getElementById('settingLocal').value || settings.local;
+  settings.contact = document.getElementById('settingContact').value || settings.contact;
+  settings.email = document.getElementById('settingEmail').value || settings.email;
+  localStorage.setItem('folclore_settings', JSON.stringify(settings));
+  applySettings();
+  showToast('Definições guardadas! ✓');
+}
+
+// ─── TABS ────────────────────────────────────────────────────────────────────
+
+function showTab(tab) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+  if (tab === 'atividades') renderAllEvents();
+}
+
+// ─── CALENDAR ────────────────────────────────────────────────────────────────
+
+const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+function renderCalendar() {
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  document.getElementById('calMonthLabel').textContent = MONTHS[month] + ' ' + year;
+
+  const body = document.getElementById('calBody');
+  body.innerHTML = '';
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInPrev = new Date(year, month, 0).getDate();
+  const today = new Date();
+
+  let cells = [];
+
+  for (let i = firstDay - 1; i >= 0; i--) {
+    cells.push({ day: daysInPrev - i, month: month - 1, year, other: true });
+  }
+  for (let i = 1; i <= daysInMonth; i++) {
+    cells.push({ day: i, month, year, other: false });
+  }
+  while (cells.length % 7 !== 0) {
+    cells.push({ day: cells.length - firstDay - daysInMonth + 1, month: month + 1, year, other: true });
+  }
+
+  cells.forEach(c => {
+    const d = new Date(c.year, c.month, c.day);
+    const dateStr = d.toISOString().slice(0, 10);
+    const dayEvents = events.filter(e => e.date === dateStr);
+    const isToday = d.toDateString() === today.toDateString();
+
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell' + (c.other ? ' other-month' : '') + (isToday ? ' today' : '');
+
+    const dateEl = document.createElement('div');
+    dateEl.className = 'cal-date';
+    dateEl.textContent = c.day;
+    cell.appendChild(dateEl);
+
+    dayEvents.slice(0, 2).forEach(ev => {
+      const dot = document.createElement('span');
+      dot.className = 'cal-event-dot tipo-' + ev.tipo;
+      dot.textContent = ev.title;
+      dot.title = ev.title;
+      dot.onclick = (e) => { e.stopPropagation(); openEditModal(ev.id); };
+      cell.appendChild(dot);
+    });
+
+    if (dayEvents.length > 2) {
+      const more = document.createElement('span');
+      more.className = 'cal-event-dot';
+      more.style.background = 'var(--brown-mid)';
+      more.textContent = '+' + (dayEvents.length - 2) + ' mais';
+      cell.appendChild(more);
+    }
+
+    cell.onclick = () => {
+      document.getElementById('formDate').value = dateStr;
+      openModal();
+    };
+
+    body.appendChild(cell);
+  });
+}
+
+function renderListView() {
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+  const monthEvents = events
+    .filter(e => {
+      const d = new Date(e.date);
+      return d.getFullYear() === year && d.getMonth() === month;
+    })
+    .sort((a, b) => new Date(a.date + 'T' + (a.time||'00:00')) - new Date(b.date + 'T' + (b.time||'00:00')));
+
+  const container = document.getElementById('listViewEvents');
+  if (monthEvents.length === 0) {
+    container.innerHTML = `<div class="empty-state"><div class="emoji">📅</div><p>Sem atividades em ${MONTHS[month]}.</p></div>`;
+    return;
+  }
+  container.innerHTML = '';
+  monthEvents.forEach(ev => {
+    container.appendChild(buildEventCard(ev));
+  });
+}
+
+function changeMonth(dir) {
+  currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + dir, 1);
+  renderCalendar();
+  if (currentView === 'list') renderListView();
+}
+
+function setCalView(view, btn) {
+  currentView = view;
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('calView').style.display = view === 'month' ? 'block' : 'none';
+  document.getElementById('listView').style.display = view === 'list' ? 'block' : 'none';
+  if (view === 'list') renderListView();
+}
+
+// ─── EVENTS LIST ─────────────────────────────────────────────────────────────
+
+function buildEventCard(ev) {
+  const d = new Date(ev.date + 'T12:00:00');
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = MONTHS[d.getMonth()].substring(0, 3).toUpperCase();
+  const tipoLabel = { ensaio: 'Ensaio', atuacao: 'Atuação', reuniao: 'Reunião', outro: 'Outro' };
+
+  const card = document.createElement('div');
+  card.className = 'event-card tipo-' + ev.tipo;
+  card.innerHTML = `
+    <div class="event-date-block">
+      <div class="event-date-day">${day}</div>
+      <div class="event-date-month">${month}</div>
+    </div>
+    <div class="event-info">
+      <div class="event-tipo">${tipoLabel[ev.tipo] || ev.tipo}</div>
+      <div class="event-titulo">${ev.title}</div>
+      <div class="event-meta">
+        ${ev.time ? `<span>🕐 ${ev.time}</span>` : ''}
+        ${ev.local ? `<span>📍 ${ev.local}</span>` : ''}
+      </div>
+      ${ev.desc ? `<div class="event-desc">${ev.desc}</div>` : ''}
+    </div>
+    <div class="event-actions">
+      <button class="btn-icon" onclick="openEditModal('${ev.id}')" title="Editar">✏️</button>
+      <button class="btn-icon del" onclick="deleteEvent('${ev.id}')" title="Eliminar">🗑️</button>
+    </div>
+  `;
+  return card;
+}
+
+function renderAllEvents() {
+  const list = document.getElementById('allEventsList');
+  const filtered = events
+    .filter(e => currentFilter === 'todos' || e.tipo === currentFilter)
+    .sort((a, b) => new Date(a.date + 'T' + (a.time||'00:00')) - new Date(b.date + 'T' + (b.time||'00:00')));
+
+  list.innerHTML = '';
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="emoji">🌻</div><p>Ainda não há atividades. Clica no <strong>+</strong> para adicionar!</p></div>`;
+    return;
+  }
+  filtered.forEach(ev => list.appendChild(buildEventCard(ev)));
+}
+
+function filterEvents(tipo, btn) {
+  currentFilter = tipo;
+  document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAllEvents();
+}
+
+// ─── MODAL ───────────────────────────────────────────────────────────────────
+
+function openModal() {
+  document.getElementById('modalTitleText').textContent = 'Nova Atividade';
+  document.getElementById('editingId').value = '';
+  document.getElementById('formTitle').value = '';
+  if (!document.getElementById('formDate').value) {
+    document.getElementById('formDate').value = new Date().toISOString().slice(0,10);
+  }
+  document.getElementById('formTime').value = '';
+  document.getElementById('formTipo').value = 'ensaio';
+  document.getElementById('formLocal').value = '';
+  document.getElementById('formDesc').value = '';
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function openEditModal(id) {
+  const ev = events.find(e => e.id === id);
+  if (!ev) return;
+  document.getElementById('modalTitleText').textContent = 'Editar Atividade';
+  document.getElementById('editingId').value = id;
+  document.getElementById('formTitle').value = ev.title;
+  document.getElementById('formDate').value = ev.date;
+  document.getElementById('formTime').value = ev.time || '';
+  document.getElementById('formTipo').value = ev.tipo;
+  document.getElementById('formLocal').value = ev.local || '';
+  document.getElementById('formDesc').value = ev.desc || '';
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.getElementById('formDate').value = '';
+}
+
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function saveEvent() {
+  const title = document.getElementById('formTitle').value.trim();
+  const date = document.getElementById('formDate').value;
+  if (!title || !date) { alert('Por favor preenche pelo menos o título e a data.'); return; }
+
+  const editingId = document.getElementById('editingId').value;
+  const ev = {
+    id: editingId || Date.now().toString(),
+    title,
+    date,
+    time: document.getElementById('formTime').value,
+    tipo: document.getElementById('formTipo').value,
+    local: document.getElementById('formLocal').value.trim(),
+    desc: document.getElementById('formDesc').value.trim()
+  };
+
+  if (editingId) {
+    events = events.map(e => e.id === editingId ? ev : e);
+  } else {
+    events.push(ev);
+  }
+
+  localStorage.setItem('folclore_events', JSON.stringify(events));
+  closeModal();
+  renderCalendar();
+  renderAllEvents();
+  showToast(editingId ? 'Atividade atualizada! ✓' : 'Atividade adicionada! ✓');
+}
+
+function deleteEvent(id) {
+  if (!confirm('Tens a certeza que queres eliminar esta atividade?')) return;
+  events = events.filter(e => e.id !== id);
+  localStorage.setItem('folclore_events', JSON.stringify(events));
+  renderCalendar();
+  renderAllEvents();
+  showToast('Atividade eliminada.');
+}
+
+// ─── TOAST ────────────────────────────────────────────────────────────────────
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.textContent = msg;
+  Object.assign(t.style, {
+    position: 'fixed', bottom: '100px', right: '36px',
+    background: 'var(--brown)', color: 'var(--cream)',
+    padding: '12px 22px', borderRadius: '8px',
+    fontFamily: "'Cinzel', serif", fontSize: '13px',
+    boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+    zIndex: '9999', opacity: '0',
+    transition: 'opacity 0.3s, transform 0.3s',
+    transform: 'translateY(10px)'
+  });
+  document.body.appendChild(t);
+  requestAnimationFrame(() => { t.style.opacity = '1'; t.style.transform = 'translateY(0)'; });
+  setTimeout(() => {
+    t.style.opacity = '0';
+    setTimeout(() => t.remove(), 400);
+  }, 2500);
+}
+
+// ─── SAMPLE DATA ─────────────────────────────────────────────────────────────
+
+function seedData() {
+  if (events.length > 0) return;
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = now.getMonth();
+  const pad = n => String(n).padStart(2,'0');
+  events = [
+    { id:'s1', title:'Ensaio Semanal', date:`${y}-${pad(m+1)}-${pad(8)}`, time:'21:00', tipo:'ensaio', local:'Casa do Povo', desc:'Preparação para a próxima atuação.' },
+    { id:'s2', title:'Ensaio Semanal', date:`${y}-${pad(m+1)}-${pad(15)}`, time:'21:00', tipo:'ensaio', local:'Casa do Povo', desc:'' },
+    { id:'s3', title:'Atuação — Festa da Aldeia', date:`${y}-${pad(m+1)}-${pad(20)}`, time:'16:00', tipo:'atuacao', local:'Largo da Igreja', desc:'Apresentação das danças tradicionais. Trajar a rigor.' },
+    { id:'s4', title:'Reunião de Direção', date:`${y}-${pad(m+1)}-${pad(22)}`, time:'19:30', tipo:'reuniao', local:'Sede', desc:'Ordem de trabalhos: planeamento anual e financeiro.' },
+    { id:'s5', title:'Ensaio Semanal', date:`${y}-${pad(m+1)}-${pad(29)}`, time:'21:00', tipo:'ensaio', local:'Casa do Povo', desc:'' },
+  ];
+  localStorage.setItem('folclore_events', JSON.stringify(events));
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+
+seedData();
+applySettings();
+renderCalendar();
+</script>
+</body>
+</html>
