@@ -16,10 +16,10 @@
 }
 
 /* ── RESET GERAL ── */
-*, *::before, *::after { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -81,12 +81,12 @@ header {
 
 .header-badge {
     font-family: 'Cinzel', serif;
-    font-size: 10px;
+    font-size: 14px; /* Aumentado de 10px para 14px */
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--gold-light);
     background: rgba(0,0,0,0.2);
-    padding: 4px 16px;
+    padding: 6px 20px; /* Aumentado ligeiramente para equilibrar o tamanho novo */
     border: 1px solid rgba(232,196,106,0.4);
     border-radius: 2px;
     animation: floatIn 0.8s 0.1s ease both;
