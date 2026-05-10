@@ -73,17 +73,19 @@ header {
 }
 
 .header-logo {
-    /* Define a altura do logo (podes ajustar este valor) */
-    height: 70px;
-    width: auto; /* Mantém a proporção da imagem */
-    margin-bottom: 8px; /* Dá um espacinho para o badge abaixo */
+    /* Reduzido para um tamanho mais discreto e equilibrado */
+    height: 55px;
+    width: auto;
 
-    /* Mantém a animação suave que tinhas antes */
+    /* Margens ajustadas para não empurrar muito o texto para baixo */
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    /* Mantém a animação suave */
     animation: floatIn 0.8s ease both;
 
-    /* Opcional: Se a imagem não tiver fundo transparente e quiseres dar um toque especial */
-    /* border-radius: 50%; */
-    /* box-shadow: 0 2px 10px rgba(0,0,0,0.2); */
+    /* Se o logo for circular, isto ajuda a manter a focagem */
+    object-fit: contain;
 }
 
 .header-badge {
