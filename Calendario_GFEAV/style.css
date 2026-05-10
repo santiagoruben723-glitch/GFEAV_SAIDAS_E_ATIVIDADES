@@ -73,19 +73,17 @@ header {
 }
 
 .header-logo {
-    /* Reduzido para um tamanho mais discreto e equilibrado */
-    height: 55px;
-    width: auto;
-
-    /* Margens ajustadas para não empurrar muito o texto para baixo */
-    margin-top: 10px;
-    margin-bottom: 5px;
-
-    /* Mantém a animação suave */
-    animation: floatIn 0.8s ease both;
-
-    /* Se o logo for circular, isto ajuda a manter a focagem */
-    object-fit: contain;
+  /* Um valor médio entre os 70px (grande) e os 55px (pequeno) */
+  height: 62px; 
+  width: auto;
+  
+  /* Ajuste das margens para centrar melhor verticalmente */
+  margin-top: 15px;
+  margin-bottom: 8px;
+  
+  /* Mantém a suavidade */
+  animation: floatIn 0.8s ease both;
+  object-fit: contain;
 }
 
 .header-badge {
