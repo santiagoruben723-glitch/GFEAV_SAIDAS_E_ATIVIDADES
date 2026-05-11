@@ -1,22 +1,15 @@
-/* ── VARIÁVEIS E CORES ── */
+/* ── VARIÁVEIS DE CORES (Extraídas do Logo) ── */
 :root {
-  /* Cores extraídas do Logotipo */
-  --terracotta: #a64432;      /* Um vermelho mais profundo que combina com os detalhes do logo */
-  --terracotta-dark: #7a2f22; 
-  --gold: #d4a348;           /* Tom de palha/ouro velho do cesto */
-  --gold-light: #e6c28a;
-  
-  /* Cores de Fundo e Contraste */
-  --cream: #f9f4e8;          /* Bege clarinho para parecer papel antigo/linho */
-  --cream-dark: #e3dbc5;
-  --brown: #2d1b14;          /* Castanho muito escuro (cor da madeira do barril) */
-  --brown-mid: #5c3d2e;      /* Tom intermédio para textos secundários */
-  
-  /* Cores das Categorias (Afinadas) */
-  --green: #436341;          /* Verde azeitona/tradicional */
-  --white: #ffffff;
-  --shadow: rgba(45, 27, 20, 0.1);
-  --shadow-strong: rgba(45, 27, 20, 0.25);
+    --terracotta: #a64432;
+    --terracotta-dark: #7a2f22;
+    --gold: #d4a348;
+    --gold-light: #e6c28a;
+    --cream: #f9f4e8;
+    --cream-dark: #e3dbc5;
+    --brown: #2d1b14;
+    --brown-mid: #5c3d2e;
+    --white: #ffffff;
+    --shadow: rgba(45, 27, 20, 0.1);
 }
 
 /* ── RESET GERAL ── */
@@ -47,10 +40,11 @@ body::before {
     z-index: 0;
 }
 
-/* ── HEADER ── */
+/* ── ESTILO DO HEADER ── */
 header {
     position: relative;
-    background: linear-gradient(160deg, var(--terracotta-dark) 0%, var(--terracotta) 50%, var(--brown-mid) 100%);
+    /* Gradiente que transita do castanho do barril para o terracota do logo */
+    background: linear-gradient(160deg, var(--brown) 0%, var(--terracotta) 100%);
     color: var(--cream);
     padding: 0;
     overflow: hidden;
@@ -77,39 +71,38 @@ header {
 }
 
 .header-logo {
-  /* Um valor médio entre os 70px (grande) e os 55px (pequeno) */
-  height: 180px; 
-  width: auto;
-  
-  /* Ajuste das margens para centrar melhor verticalmente */
-  margin-top: 15px;
-  margin-bottom: 8px;
-  
-  /* Mantém a suavidade */
-  animation: floatIn 0.8s ease both;
-  object-fit: contain;
+    height: 62px; /* Tamanho equilibrado (nem 8 nem 80) */
+    width: auto;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    animation: floatIn 0.8s ease both;
+    object-fit: contain;
 }
 
 .header-badge {
     font-family: 'Cinzel', serif;
-    font-size: 14px; /* Aumentado de 10px para 14px */
+    font-size: 14px; /* Tamanho maior como pediste */
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--gold-light);
-    background: rgba(0,0,0,0.2);
-    padding: 6px 20px; /* Aumentado ligeiramente para equilibrar o tamanho novo */
-    border: 1px solid rgba(232,196,106,0.4);
+    background: rgba(0,0,0,0.25);
+    padding: 6px 20px;
+    border: 1px solid rgba(230, 194, 138, 0.3);
     border-radius: 2px;
+    margin-bottom: 10px;
     animation: floatIn 0.8s 0.1s ease both;
 }
 
+/* ── ESTILO DO H1 ── */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-size: clamp(1.8rem, 5vw, 3.2rem); /* Ajusta-se ao ecrã */
     font-weight: 900;
     line-height: 1.1;
     color: var(--white);
-    text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    margin: 5px 20px 10px;
+    letter-spacing: -0.01em;
     animation: floatIn 0.8s 0.2s ease both;
 }
 
