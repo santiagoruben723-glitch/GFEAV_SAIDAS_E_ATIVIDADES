@@ -77,37 +77,38 @@ header {
     gap: 12px;
 }
 
+/* ── AJUSTE DO LOGO (PARA NÃO FICAR TRANSPARENTE) ── */
 .header-logo {
-    height: 170px; /* O tamanho que ajustaste */
+    height: 170px;
     width: auto;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    filter: none; /* Removemos qualquer filtro que estivesse a apagar o logo */
+    opacity: 1;   /* Garante que o logo está a 100% */
     animation: floatIn 0.8s ease both;
-    object-fit: contain;
 }
 
+/* ── AJUSTE DO BADGE ── */
 .header-badge {
     font-family: 'Cinzel', serif;
-    font-size: 14px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
+    font-size: 16px; /* Aumentado para equilibrar com o logo */
+    font-weight: 700;
+    letter-spacing: 0.4em;
     color: var(--white-soft);
-    background: var(--folk-red); /* Badge vermelho para destacar no bege */
-    padding: 6px 20px;
-    border-radius: 2px;
-    margin-bottom: 15px;
-    animation: floatIn 0.8s 0.1s ease both;
+    background: var(--folk-red); /* Vermelho forte para destacar */
+    padding: 8px 25px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(166, 44, 50, 0.2);
 }
 
-/* ── ESTILO DO H1 ── */
+/* ── AJUSTE DO TITULO (MAIOR E MAIS FORTE) ── */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-size: clamp(2rem, 6vw, 3.5rem); /* Aumentei o tamanho mínimo e máximo */
     font-weight: 900;
-    color: var(--brown-deep);
-    margin: 5px 20px 10px;
-    text-shadow: none;
-    animation: floatIn 0.8s 0.2s ease both;
+    color: var(--brown-deep); /* Castanho bem escuro para ler bem */
+    margin: 10px 20px;
+    line-height: 1.2;
 }
 
 .header-sub {
@@ -533,9 +534,32 @@ input:focus, select:focus, textarea:focus {
 .fab:hover { transform: scale(1.1) rotate(90deg); }
 
 /* ── LEGENDA E FILTROS ── */
-.legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; }
-.legend-item { display: flex; align-items: center; gap: 7px; font-size: 14px; color: var(--brown-mid); }
-.legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+.legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    justify-content: center; /* Centra a legenda para ficar equilibrada com o logo */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    font-weight: 600; /* Texto um pouco mais grosso para ler melhor */
+    color: var(--brown-deep); /* Usa o castanho escuro em vez do mid */
+    background: rgba(45, 27, 20, 0.05); /* Um fundo muito suave para destacar o item */
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; /* Bolinhas redondas combinam melhor com o novo logo */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
 
 .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
 .filter-chip {
