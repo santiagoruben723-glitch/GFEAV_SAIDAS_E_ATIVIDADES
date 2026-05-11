@@ -74,9 +74,43 @@
   <section id="tab-atividades" class="tab-section">
     <div class="events-list" id="allEventsList"></div>
   </section>
+<section id="tab-definicoes" class="tab-section">
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-icon">⚙️</div>
+      <div class="ornament-line"></div>
+    </div>
 
-  <section id="tab-definicoes" class="tab-section">
-     </section>
+    <div class="settings-container">
+      <div class="form-group">
+        <label>Nome do Grupo</label>
+        <input type="text" id="settingName">
+      </div>
+      <div class="form-group">
+        <label>Subtítulo / Fundação</label>
+        <input type="text" id="settingSubtitle">
+      </div>
+      <div class="form-group">
+        <label>Sobre o Grupo</label>
+        <textarea id="settingAbout" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Sede / Local</label>
+        <input type="text" id="settingLocal">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Contacto</label>
+          <input type="text" id="settingContact">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="settingEmail">
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="saveSettings()">Guardar Definições</button>
+    </div>
+  </section>
 </main>
 
 <button class="fab" onclick="openModal()" title="Adicionar Atividade">＋</button>
