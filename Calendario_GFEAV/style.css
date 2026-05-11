@@ -513,25 +513,38 @@ input:focus, select:focus, textarea:focus {
     border: 1px solid rgba(61,43,26,0.15);
 }
 
-/* ── FAB (Botão Flutuante) ── */
+/* ── AJUSTE DO BOTÃO FLUTUANTE (FAB) ── */
 .fab {
     position: fixed;
     bottom: 36px;
     right: 36px;
-    width: 60px; height: 60px;
+    width: 64px; /* Aumentado ligeiramente */
+    height: 64px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
-    color: white;
+    
+    /* Usamos o vermelho folclórico para ser visível em todo o lado */
+    background: linear-gradient(135deg, var(--folk-red), var(--terracotta-dark));
+    color: var(--white-soft);
+    
     border: none;
-    font-size: 26px;
+    font-size: 30px;
     cursor: pointer;
-    box-shadow: 0 6px 24px rgba(192,82,58,0.45);
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.25s;
-    z-index: 100;
+    
+    /* Sombra mais forte para "flutuar" sobre o fundo claro */
+    box-shadow: 0 6px 18px rgba(45, 27, 20, 0.4);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000; /* Garante que fica por cima de tudo */
 }
 
-.fab:hover { transform: scale(1.1) rotate(90deg); }
+.fab:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 8px 24px rgba(45, 27, 20, 0.5);
+    background: var(--folk-red);
+}}
 
 /* ── LEGENDA E FILTROS ── */
 .legend {
