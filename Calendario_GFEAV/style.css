@@ -4,12 +4,16 @@
     --terracotta-dark: #7a2f22;
     --gold: #d4a348;
     --gold-light: #e6c28a;
+
+    /* Invertemos aqui: o Cream passa a ser a base do Header */
+    --header-bg: #f9f4e8;
+    --header-text: #2d1b14; /* Castanho escuro para o texto ler-se bem no fundo claro */
+
     --cream: #f9f4e8;
     --cream-dark: #e3dbc5;
     --brown: #2d1b14;
     --brown-mid: #5c3d2e;
     --white: #ffffff;
-    --shadow: rgba(45, 27, 20, 0.1);
 }
 
 /* ── RESET GERAL ── */
@@ -43,20 +47,21 @@ body::before {
 /* ── ESTILO DO HEADER ── */
 header {
     position: relative;
-    /* Gradiente que transita do castanho do barril para o terracota do logo */
-    background: linear-gradient(160deg, var(--brown) 0%, var(--terracotta) 100%);
-    color: var(--cream);
+    /* Fundo claro para destacar o logo escuro */
+    background-color: var(--header-bg);
+    background-image: radial-gradient(circle at 50% 50%, rgba(212, 163, 72, 0.05) 0%, transparent 100%);
+    color: var(--header-text);
     padding: 0;
     overflow: hidden;
-    border-bottom: 4px solid var(--gold);
+    border-bottom: 4px solid var(--terracotta); /* Linha terracota para separar do corpo */
 }
 
+/* Ajuste no padrão do fundo para ser visível em fundo claro */
 .header-pattern {
     position: absolute;
     inset: 0;
-    opacity: 0.08;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z M30 10 L50 30 L30 50 L10 30 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-size: 60px 60px;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a64432' fill-opacity='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z M30 10 L50 30 L30 50 L10 30 Z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .header-inner {
@@ -71,7 +76,7 @@ header {
 }
 
 .header-logo {
-    height: 170px; /* Tamanho equilibrado (nem 8 nem 80) */
+    height: 62px; /* Tamanho equilibrado (nem 8 nem 80) */
     width: auto;
     margin-top: 15px;
     margin-bottom: 8px;
@@ -81,13 +86,12 @@ header {
 
 .header-badge {
     font-family: 'Cinzel', serif;
-    font-size: 14px; /* Tamanho maior como pediste */
+    font-size: 14px;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--gold-light);
-    background: rgba(0,0,0,0.25);
+    color: var(--white);
+    background: var(--terracotta); /* Badge escuro para contrastar com o fundo claro */
     padding: 6px 20px;
-    border: 1px solid rgba(230, 194, 138, 0.3);
     border-radius: 2px;
     margin-bottom: 10px;
     animation: floatIn 0.8s 0.1s ease both;
@@ -96,23 +100,18 @@ header {
 /* ── ESTILO DO H1 ── */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 5vw, 3.2rem); /* Ajusta-se ao ecrã */
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
     font-weight: 900;
     line-height: 1.1;
-    color: var(--white);
-    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    color: var(--brown); /* Texto escuro */
+    text-shadow: none; /* Removemos a sombra para ficar mais limpo no fundo claro */
     margin: 5px 20px 10px;
-    letter-spacing: -0.01em;
     animation: floatIn 0.8s 0.2s ease both;
 }
 
 .header-sub {
-    font-family: 'EB Garamond', serif;
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--cream-dark);
-    opacity: 0.9;
-    animation: floatIn 0.8s 0.3s ease both;
+    color: var(--brown-mid);
+    opacity: 0.8;
 }
 
 @keyframes floatIn {
