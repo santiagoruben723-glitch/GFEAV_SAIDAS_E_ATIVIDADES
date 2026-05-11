@@ -150,31 +150,35 @@ function setCalView(view, btn) {
 // ─── LISTAGEM E FILTROS ──────────────────────────────────────────────────────
 
 function buildEventCard(ev) {
-    const d = new Date(ev.date + 'T12:00:00');
-    const day = String(d.getDate()).padStart(2, '0');
-    const month = MONTHS[d.getMonth()].substring(0, 3).toUpperCase();
-    const tipoLabel = { ensaio: 'Ensaio', atuacao: 'Atuação', reuniao: 'Reunião', outro: 'Outro' };
-    
     const card = document.createElement('div');
     card.className = 'event-card tipo-' + ev.tipo;
+
+    // Mapeamento para as tuas novas variáveis do style.css
+    const colorMap = {
+        'ensaio': 'var(--folk-green)',
+        'atuacao': 'var(--folk-red)',
+        'reuniao': 'var(--folk-gold)',
+        'outro': 'var(--brown-mid)'
+    };
+    const eventColor = colorMap[ev.tipo] || 'var(--brown-mid)';
+
     card.innerHTML = `
-    <div class="event-date-block">
-    <div class="event-date-day">${day}</div>
-    <div class="event-date-month">${month}</div>
-    </div>
-    <div class="event-info">
-    <div class="event-tipo">${tipoLabel[ev.tipo] || ev.tipo}</div>
-    <div class="event-titulo">${ev.title}</div>
-    <div class="event-meta">
-    ${ev.time ? `<span>🕐 ${ev.time}</span>` : ''}
-    ${ev.local ? `<span>📍 ${ev.local}</span>` : ''}
-    </div>
-    ${ev.desc ? `<div class="event-desc">${ev.desc}</div>` : ''}
-    </div>
-    <div class="event-actions">
-    <button class="btn-icon" onclick="openEditModal('${ev.id}')" title="Editar">✏️</button>
-    <button class="btn-icon del" onclick="deleteEvent('${ev.id}')" title="Eliminar">🗑️</button>
-    </div>
+        <div class="event-card-header">
+            <span class="event-tipo" style="color: ${eventColor}">${ev.tipo.toUpperCase()}</span>
+            <div class="event-actions">
+                <button class="action-btn edit" onclick="editEvent('${ev.id}')" title="Editar">✏️</button>
+                <button class="action-btn delete" onclick="deleteEvent('${ev.id}')" title="Eliminar">🗑️</button>
+            </div>
+        </div>
+        <h3 class="event-card-title">${ev.title}</h3>
+        <div class="event-card-info">
+            <span>📅 ${formatDate(ev.date)}</span>
+            <span>⏰ ${ev.time || '--:--'}</span>
+        </div>
+        <div class="event-card-info">
+            <span>📍 ${ev.local || 'Local não definido'}</span>
+        </div>
+        ${ev.desc ? `<p class="event-card-desc">${ev.desc}</p>` : ''}
     `;
     return card;
 }
