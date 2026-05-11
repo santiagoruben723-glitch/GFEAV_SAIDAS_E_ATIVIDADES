@@ -184,10 +184,11 @@ function renderAllEvents() {
     const filtered = events
     .filter(e => currentFilter === 'todos' || e.tipo === currentFilter)
     .sort((a, b) => new Date(a.date + 'T' + (a.time||'00:00')) - new Date(b.date + 'T' + (b.time||'00:00')));
-    
+
     list.innerHTML = '';
     if (filtered.length === 0) {
-        list.innerHTML = `<div class="empty-state"><div class="emoji">🌻</div><p>Ainda não há atividades.</p></div>`;
+        // Mudámos o emoji e a cor para combinar com o estilo rústico
+        list.innerHTML = `<div class="empty-state"><div class="emoji" style="color:var(--folk-gold)">❧</div><p>Ainda não há atividades registadas.</p></div>`;
         return;
     }
     filtered.forEach(ev => list.appendChild(buildEventCard(ev)));
