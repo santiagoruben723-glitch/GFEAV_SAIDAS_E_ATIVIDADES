@@ -1,18 +1,22 @@
 /* ── VARIÁVEIS E CORES ── */
 :root {
-    --terracotta: #c0523a;
-    --terracotta-dark: #8f3624;
-    --gold: #c9962a;
-    --gold-light: #e8c46a;
-    --green: #2d5a3d;
-    --green-light: #4a8560;
-    --cream: #f5ede0;
-    --cream-dark: #e8d9c4;
-    --brown: #3d2b1a;
-    --brown-mid: #6b4226;
-    --white: #fdf8f1;
-    --shadow: rgba(61,43,26,0.15);
-    --shadow-strong: rgba(61,43,26,0.3);
+  /* Cores extraídas do Logotipo */
+  --terracotta: #a64432;      /* Um vermelho mais profundo que combina com os detalhes do logo */
+  --terracotta-dark: #7a2f22; 
+  --gold: #d4a348;           /* Tom de palha/ouro velho do cesto */
+  --gold-light: #e6c28a;
+  
+  /* Cores de Fundo e Contraste */
+  --cream: #f9f4e8;          /* Bege clarinho para parecer papel antigo/linho */
+  --cream-dark: #e3dbc5;
+  --brown: #2d1b14;          /* Castanho muito escuro (cor da madeira do barril) */
+  --brown-mid: #5c3d2e;      /* Tom intermédio para textos secundários */
+  
+  /* Cores das Categorias (Afinadas) */
+  --green: #436341;          /* Verde azeitona/tradicional */
+  --white: #ffffff;
+  --shadow: rgba(45, 27, 20, 0.1);
+  --shadow-strong: rgba(45, 27, 20, 0.25);
 }
 
 /* ── RESET GERAL ── */
