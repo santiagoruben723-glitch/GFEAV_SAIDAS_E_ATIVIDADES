@@ -116,7 +116,53 @@
 <button class="fab" onclick="openModal()" title="Adicionar Atividade">＋</button>
 
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal">
+    <h2 id="modalTitleText" class="section-title">Nova Atividade</h2>
+    <input type="hidden" id="editingId">
+
+    <div class="form-group">
+      <label>Título da Atividade</label>
+      <input type="text" id="formTitle" placeholder="Ex: Ensaio Geral">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" id="formDate">
+      </div>
+      <div class="form-group">
+        <label>Hora</label>
+        <input type="time" id="formTime">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Tipo</label>
+        <select id="formTipo">
+          <option value="ensaio">Ensaio</option>
+          <option value="atuacao">Atuação</option>
+          <option value="reuniao">Reunião</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Local</label>
+        <input type="text" id="formLocal" placeholder="Ex: Sede do Grupo">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Descrição / Observações</label>
+      <textarea id="formDesc" rows="3" placeholder="Informações adicionais..."></textarea>
+    </div>
+
+    <div style="display: flex; gap: 12px; margin-top: 24px;">
+      <button class="btn btn-secondary" style="flex: 1" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" style="flex: 1" onclick="saveEvent()">Guardar</button>
+    </div>
   </div>
+</div>
 
 <footer>
   <div class="footer-brand" id="footerBrand">Grupo Folclórico e Etnográfico de Albergaria-a-Velha</div>
