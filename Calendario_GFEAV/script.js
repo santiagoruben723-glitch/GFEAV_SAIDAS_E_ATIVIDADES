@@ -19,11 +19,11 @@ let currentFilter = 'todos';
 function applySettings() {
     document.getElementById('groupName').textContent = settings.name;
     document.getElementById('groupSub').textContent = settings.subtitle;
-    
+
     // Atualiza o título da página e do rodapé
     document.getElementById('footerBrand').textContent = settings.name;
     document.title = settings.name + ' · Calendário';
-    
+
     // Preenche o formulário de definições
     document.getElementById('settingName').value = settings.name;
     document.getElementById('settingSubtitle').value = settings.subtitle;
@@ -40,7 +40,7 @@ function saveSettings() {
     settings.local = document.getElementById('settingLocal').value || settings.local;
     settings.contact = document.getElementById('settingContact').value || settings.contact;
     settings.email = document.getElementById('settingEmail').value || settings.email;
-    
+
     localStorage.setItem('folclore_settings', JSON.stringify(settings));
     applySettings();
     showToast('Definições guardadas! ✓');
@@ -51,11 +51,11 @@ function saveSettings() {
 function showTab(tab) {
     document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-    
+
     document.getElementById('tab-' + tab).classList.add('active');
     // Ativa o botão correto na navegação
     event.currentTarget.classList.add('active');
-    
+
     if (tab === 'atividades') renderAllEvents();
 }
 
@@ -67,17 +67,17 @@ function renderCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     document.getElementById('calMonthLabel').textContent = MONTHS[month] + ' ' + year;
-    
+
     const body = document.getElementById('calBody');
     body.innerHTML = '';
-    
+
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const daysInPrev = new Date(year, month, 0).getDate();
     const today = new Date();
-    
+
     let cells = [];
-    
+
     // Dias do mês anterior
     for (let i = firstDay - 1; i >= 0; i--) {
         cells.push({ day: daysInPrev - i, month: month - 1, year, other: true });
@@ -90,21 +90,21 @@ function renderCalendar() {
     while (cells.length % 7 !== 0) {
         cells.push({ day: cells.length - firstDay - daysInMonth + 1, month: month + 1, year, other: true });
     }
-    
+
     cells.forEach(c => {
         const d = new Date(c.year, c.month, c.day);
         const dateStr = d.toISOString().slice(0, 10);
         const dayEvents = events.filter(e => e.date === dateStr);
         const isToday = d.toDateString() === today.toDateString();
-        
+
         const cell = document.createElement('div');
         cell.className = 'cal-cell' + (c.other ? ' other-month' : '') + (isToday ? ' today' : '');
-        
+
         const dateEl = document.createElement('div');
         dateEl.className = 'cal-date';
         dateEl.textContent = c.day;
         cell.appendChild(dateEl);
-        
+
         // Mostrar até 2 eventos como dots/labels
         dayEvents.slice(0, 2).forEach(ev => {
             const dot = document.createElement('span');
@@ -114,7 +114,7 @@ function renderCalendar() {
             dot.onclick = (e) => { e.stopPropagation(); openEditModal(ev.id); };
             cell.appendChild(dot);
         });
-        
+
         if (dayEvents.length > 2) {
             const more = document.createElement('span');
             more.className = 'cal-event-dot';
@@ -122,12 +122,12 @@ function renderCalendar() {
             more.textContent = '+' + (dayEvents.length - 2) + ' mais';
             cell.appendChild(more);
         }
-        
+
         cell.onclick = () => {
             document.getElementById('formDate').value = dateStr;
             openModal();
         };
-        
+
         body.appendChild(cell);
     });
 }
@@ -163,22 +163,22 @@ function buildEventCard(ev) {
     const eventColor = colorMap[ev.tipo] || 'var(--brown-mid)';
 
     card.innerHTML = `
-        <div class="event-card-header">
-            <span class="event-tipo" style="color: ${eventColor}">${ev.tipo.toUpperCase()}</span>
-            <div class="event-actions">
-                <button class="action-btn edit" onclick="editEvent('${ev.id}')" title="Editar">✏️</button>
-                <button class="action-btn delete" onclick="deleteEvent('${ev.id}')" title="Eliminar">🗑️</button>
-            </div>
-        </div>
-        <h3 class="event-card-title">${ev.title}</h3>
-        <div class="event-card-info">
-            <span>📅 ${formatDate(ev.date)}</span>
-            <span>⏰ ${ev.time || '--:--'}</span>
-        </div>
-        <div class="event-card-info">
-            <span>📍 ${ev.local || 'Local não definido'}</span>
-        </div>
-        ${ev.desc ? `<p class="event-card-desc">${ev.desc}</p>` : ''}
+    <div class="event-card-header">
+    <span class="event-tipo" style="color: ${eventColor}">${ev.tipo.toUpperCase()}</span>
+    <div class="event-actions">
+    <button class="action-btn edit" onclick="editEvent('${ev.id}')" title="Editar">✏️</button>
+    <button class="action-btn delete" onclick="deleteEvent('${ev.id}')" title="Eliminar">🗑️</button>
+    </div>
+    </div>
+    <h3 class="event-card-title">${ev.title}</h3>
+    <div class="event-card-info">
+    <span>📅 ${formatDate(ev.date)}</span>
+    <span>⏰ ${ev.time || '--:--'}</span>
+    </div>
+    <div class="event-card-info">
+    <span>📍 ${ev.local || 'Local não definido'}</span>
+    </div>
+    ${ev.desc ? `<p class="event-card-desc">${ev.desc}</p>` : ''}
     `;
     return card;
 }
@@ -207,7 +207,7 @@ function renderListView() {
         return d.getFullYear() === year && d.getMonth() === month;
     })
     .sort((a, b) => new Date(a.date + 'T' + (a.time||'00:00')) - new Date(b.date + 'T' + (b.time||'00:00')));
-    
+
     const container = document.getElementById('listViewEvents');
     if (monthEvents.length === 0) {
         container.innerHTML = `<div class="empty-state"><div class="emoji">📅</div><p>Sem atividades em ${MONTHS[month]}.</p></div>`;
@@ -267,7 +267,7 @@ function saveEvent() {
     const title = document.getElementById('formTitle').value.trim();
     const date = document.getElementById('formDate').value;
     if (!title || !date) { alert('Preenche o título e a data.'); return; }
-    
+
     const editingId = document.getElementById('editingId').value;
     const ev = {
         id: editingId || Date.now().toString(),
@@ -277,13 +277,13 @@ function saveEvent() {
         local: document.getElementById('formLocal').value.trim(),
         desc: document.getElementById('formDesc').value.trim()
     };
-    
+
     if (editingId) {
         events = events.map(e => e.id === editingId ? ev : e);
     } else {
         events.push(ev);
     }
-    
+
     localStorage.setItem('folclore_events', JSON.stringify(events));
     closeModal();
     renderCalendar();
@@ -336,6 +336,12 @@ function seedData() {
     localStorage.setItem('folclore_events', JSON.stringify(events));
 }
 
+// Função de utilitário para formatar datas (Ex: 2026-05-11 -> 11/05/2026)
+function formatDate(dateStr) {
+    if (!dateStr) return "";
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+}
 // ─── INICIALIZAÇÃO ──────────────────────────────────────────────────────────
 
 seedData();
