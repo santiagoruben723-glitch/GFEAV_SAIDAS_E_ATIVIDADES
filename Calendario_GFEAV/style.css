@@ -1,19 +1,21 @@
 /* ── VARIÁVEIS DE CORES (Extraídas do Logo) ── */
 :root {
-    --terracotta: #a64432;
-    --terracotta-dark: #7a2f22;
-    --gold: #d4a348;
-    --gold-light: #e6c28a;
+    /* Tons de Terra e Madeira (Barril/Cesto) */
+    --brown-deep: #2d1b14;    /* Castanho da madeira do barril */
+    --brown-mid: #5c3d2e;     /* Tom intermédio rústico */
 
-    /* Invertemos aqui: o Cream passa a ser a base do Header */
-    --header-bg: #f9f4e8;
-    --header-text: #2d1b14; /* Castanho escuro para o texto ler-se bem no fundo claro */
+    /* Tons de Tecido e Linho (Fundo) */
+    --linen: #f4eee0;         /* Bege que lembra o linho antigo */
+    --linen-dark: #e8dfcc;    /* Versão para sombras e bordas */
 
-    --cream: #f9f4e8;
-    --cream-dark: #e3dbc5;
-    --brown: #2d1b14;
-    --brown-mid: #5c3d2e;
-    --white: #ffffff;
+    /* Tons Vibrantes dos Trajes (Destaques) */
+    --folk-red: #a62c1d;      /* Vermelho dos bordados e saias */
+    --folk-gold: #c9962a;     /* Ouro das arrecadas e detalhes do cesto */
+    --folk-green: #3a5a40;    /* Verde das paisagens e detalhes rurais */
+
+    /* Auxiliares */
+    --text-main: #2d1b14;
+    --white-soft: #fdfaf5;
 }
 
 /* ── RESET GERAL ── */
@@ -24,8 +26,8 @@
 }
 
 body {
-    background-color: var(--cream);
-    color: var(--brown);
+    background-color: var(--linen); /* Em vez de --cream */
+    color: var(--brown-deep);      /* Em vez de --brown */
     font-family: 'EB Garamond', Georgia, serif;
     font-size: 18px;
     line-height: 1.6;
@@ -45,15 +47,15 @@ body::before {
 }
 
 /* ── ESTILO DO HEADER ── */
+/* ── CABEÇALHO (HEADER) ── */
 header {
     position: relative;
-    /* Fundo claro para destacar o logo escuro */
-    background-color: var(--header-bg);
+    background-color: var(--linen); /* Fundo claro para o logo de 170px */
     background-image: radial-gradient(circle at 50% 50%, rgba(212, 163, 72, 0.05) 0%, transparent 100%);
-    color: var(--header-text);
+    color: var(--brown-deep);
     padding: 0;
     overflow: hidden;
-    border-bottom: 4px solid var(--terracotta); /* Linha terracota para separar do corpo */
+    border-bottom: 5px solid var(--folk-red); /* "Fita" vermelha de remate */
 }
 
 /* Ajuste no padrão do fundo para ser visível em fundo claro */
@@ -76,10 +78,10 @@ header {
 }
 
 .header-logo {
-    height: 170px; /* Tamanho equilibrado (nem 8 nem 80) */
+    height: 170px; /* O tamanho que ajustaste */
     width: auto;
-    margin-top: 15px;
-    margin-bottom: 8px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     animation: floatIn 0.8s ease both;
     object-fit: contain;
 }
@@ -89,23 +91,22 @@ header {
     font-size: 14px;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--white);
-    background: var(--terracotta); /* Badge escuro para contrastar com o fundo claro */
+    color: var(--white-soft);
+    background: var(--folk-red); /* Badge vermelho para destacar no bege */
     padding: 6px 20px;
     border-radius: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     animation: floatIn 0.8s 0.1s ease both;
 }
 
 /* ── ESTILO DO H1 ── */
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
     font-weight: 900;
-    line-height: 1.1;
-    color: var(--brown); /* Texto escuro */
-    text-shadow: none; /* Removemos a sombra para ficar mais limpo no fundo claro */
+    color: var(--brown-deep);
     margin: 5px 20px 10px;
+    text-shadow: none;
     animation: floatIn 0.8s 0.2s ease both;
 }
 
@@ -274,7 +275,7 @@ main {
 .cal-days-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    background: var(--terracotta);
+    background: var(--folk-red); /* Cabeçalho dos dias em vermelho */
 }
 
 .cal-day-name {
@@ -307,19 +308,15 @@ main {
 .cal-cell.other-month .cal-date { opacity: 0.3; }
 
 .cal-cell.today .cal-date {
-    background: var(--terracotta);
-    color: white;
+    background: var(--folk-gold); /* Destaque do dia atual em "ouro" */
+    color: var(--brown-deep);
     border-radius: 50%;
 }
 
 .cal-date {
     font-family: 'Cinzel', serif;
-    font-size: 13px;
     font-weight: 700;
     color: var(--brown-mid);
-    margin-bottom: 4px;
-    width: 28px; height: 28px;
-    display: flex; align-items: center; justify-content: center;
 }
 
 /* ── EVENTOS (DOTS E CARDS) ── */
@@ -337,9 +334,9 @@ main {
     line-height: 1.3;
 }
 
-.cal-event-dot.tipo-ensaio { background: var(--green); }
-.cal-event-dot.tipo-atuacao { background: var(--terracotta); }
-.cal-event-dot.tipo-reuniao { background: var(--gold); color: var(--brown); }
+.cal-event-dot.tipo-ensaio { background: var(--folk-green); }
+.cal-event-dot.tipo-atuacao { background: var(--folk-red); }
+.cal-event-dot.tipo-reuniao { background: var(--folk-gold); color: var(--brown-deep); }
 .cal-event-dot.tipo-outro { background: var(--brown-mid); }
 
 .event-card {
@@ -362,8 +359,9 @@ main {
     box-shadow: 0 6px 24px var(--shadow-strong);
 }
 
-.event-card.tipo-ensaio { border-left-color: var(--green); }
-.event-card.tipo-reuniao { border-left-color: var(--gold); }
+.event-card.tipo-ensaio { border-left-color: var(--folk-green); }
+.event-card.tipo-atuacao { border-left-color: var(--folk-red); } /* Já tinhas --terracotta, mas podes usar --folk-red */
+.event-card.tipo-reuniao { border-left-color: var(--folk-gold); }
 .event-card.tipo-outro { border-left-color: var(--brown-mid); }
 
 @keyframes slideIn {
@@ -549,14 +547,13 @@ input:focus, select:focus, textarea:focus {
 }
 .filter-chip.active { background: var(--terracotta); color: white; }
 
-/* ── FOOTER ── */
+/* ── RODAPÉ (FOOTER) ── */
 footer {
     text-align: center;
-    padding: 28px 20px;
-    background: var(--brown);
-    color: var(--cream-dark);
-    font-size: 14px;
-    border-top: 4px solid var(--gold);
+    padding: 30px 20px;
+    background: var(--brown-deep); /* Base sólida em castanho escuro */
+    color: var(--linen);
+    border-top: 4px solid var(--folk-gold);
 }
 
 .footer-brand {
