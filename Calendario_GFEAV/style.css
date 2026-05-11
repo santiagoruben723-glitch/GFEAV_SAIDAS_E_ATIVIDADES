@@ -71,7 +71,7 @@ header {
 }
 
 .header-logo {
-    height: 62px; /* Tamanho equilibrado (nem 8 nem 80) */
+    height: 170px; /* Tamanho equilibrado (nem 8 nem 80) */
     width: auto;
     margin-top: 15px;
     margin-bottom: 8px;
