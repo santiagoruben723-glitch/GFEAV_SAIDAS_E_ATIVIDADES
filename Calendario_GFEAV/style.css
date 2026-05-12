@@ -425,40 +425,47 @@ main {
     padding-top: 8px;
 }
 
-/* ── MODAL ── */
+/* ── JANELA MODAL (FORMULÁRIO) ── */
 .modal-overlay {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(61,43,26,0.55);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
+    background: rgba(45, 27, 20, 0.75); /* Fundo escuro para destacar o modal */
+    display: none; /* Escondido por padrão */
     align-items: center;
     justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(4px); /* Efeito de vidro foscado no fundo */
     padding: 20px;
 }
 
-.modal-overlay.open { display: flex; }
+/* Quando o JS adiciona a classe 'active', o modal aparece no centro */
+.modal-overlay.active {
+    display: flex;
+}
 
 .modal {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 36px;
+    background: var(--white-soft);
     width: 100%;
-    max-width: 520px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    border: 1px solid var(--cream-dark);
+    max-width: 500px;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-top: 6px solid var(--folk-red); /* Detalhe em vermelho folclórico */
+    animation: modalIn 0.3s ease-out;
     position: relative;
-    animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow-y: auto;
+    max-height: 90vh; /* Garante que cabe em ecrãs pequenos como o teu Redmi */
 }
 
 @keyframes modalIn {
-    from { opacity: 0; transform: scale(0.88) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-/* ── FORMULÁRIOS ── */
-.form-group { margin-bottom: 18px; }
+/* ── ESTILOS DOS CAMPOS DO FORMULÁRIO ── */
+.form-group { 
+    margin-bottom: 18px; 
+}
 
 label {
     display: block;
@@ -466,28 +473,46 @@ label {
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--brown-mid);
+    color: var(--brown-deep); /* Texto mais escuro para ler melhor */
     margin-bottom: 7px;
+    font-weight: 700;
 }
 
 input, select, textarea {
     width: 100%;
-    padding: 11px 14px;
-    border: 1px solid var(--cream-dark);
+    padding: 12px 14px;
+    border: 1px solid var(--linen-dark); /* Borda em tom de linho */
     border-radius: 7px;
     font-family: 'EB Garamond', serif;
     font-size: 16px;
-    background: var(--cream);
+    background: var(--linen); /* Fundo bege clarinho */
     outline: none;
+    color: var(--brown-deep);
+    transition: all 0.2s ease;
 }
 
+/* Foco nos campos - Cor de Ouro */
 input:focus, select:focus, textarea:focus {
-    border-color: var(--terracotta);
-    background: var(--white);
+    border-color: var(--folk-gold);
+    background: var(--white-soft);
+    box-shadow: 0 0 0 3px rgba(201, 150, 42, 0.15);
 }
 
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-row { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 14px; 
+}
 
+/* Ajuste para dispositivos móveis (ecrãs estreitos) */
+@media (max-width: 480px) {
+    .form-row { 
+        grid-template-columns: 1fr; 
+    }
+    .modal {
+        padding: 20px;
+    }
+}
 /* ── BOTÕES ── */
 .btn {
     font-family: 'Cinzel', serif;
