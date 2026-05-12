@@ -513,29 +513,46 @@ input:focus, select:focus, textarea:focus {
         padding: 20px;
     }
 }
-/* ── BOTÕES ── */
+
+/* ── ESTILO DOS BOTÕES NO MODAL ── */
 .btn {
+    padding: 12px 20px;
+    border-radius: 8px;
     font-family: 'Cinzel', serif;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 13px 28px;
-    border: none;
-    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
+    border: none;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Botão Guardar (Agora com var(--folk-red)) */
 .btn-primary {
-    background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+    background: var(--folk-red);
     color: white;
-    box-shadow: 0 4px 14px rgba(192,82,58,0.35);
+    box-shadow: 0 4px 12px rgba(166, 44, 50, 0.2);
 }
 
+.btn-primary:hover {
+    background: #8e2518;
+    transform: translateY(-2px);
+}
+
+/* Botão Cancelar (Agora com var(--linen-dark)) */
 .btn-secondary {
-    background: var(--cream-dark);
-    color: var(--brown-mid);
-    border: 1px solid rgba(61,43,26,0.15);
+    background: var(--linen-dark);
+    color: var(--brown-deep);
+}
+
+/* Ajuste do contentor dos botões para ficarem lado a lado */
+.modal div[style*="display: flex"] {
+    gap: 12px;
+    margin-top: 25px;
 }
 
 /* ── AJUSTE DO BOTÃO FLUTUANTE (FAB) ── */
