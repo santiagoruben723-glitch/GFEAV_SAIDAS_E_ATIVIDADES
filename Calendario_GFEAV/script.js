@@ -230,19 +230,25 @@ function openModal() {
     document.getElementById('modalTitleText').textContent = 'Nova Atividade';
     document.getElementById('editingId').value = '';
     document.getElementById('formTitle').value = '';
+    
+    // Define a data de hoje por defeito se o campo estiver vazio
     if (!document.getElementById('formDate').value) {
         document.getElementById('formDate').value = new Date().toISOString().slice(0,10);
     }
+    
     document.getElementById('formTime').value = '';
     document.getElementById('formTipo').value = 'ensaio';
     document.getElementById('formLocal').value = '';
     document.getElementById('formDesc').value = '';
-    document.getElementById('modalOverlay').classList.add('open');
+    
+    // Mudado de 'open' para 'active' para ligar ao novo CSS
+    document.getElementById('modalOverlay').classList.add('active');
 }
 
 function openEditModal(id) {
     const ev = events.find(e => e.id === id);
     if (!ev) return;
+    
     document.getElementById('modalTitleText').textContent = 'Editar Atividade';
     document.getElementById('editingId').value = id;
     document.getElementById('formTitle').value = ev.title;
@@ -251,27 +257,38 @@ function openEditModal(id) {
     document.getElementById('formTipo').value = ev.tipo;
     document.getElementById('formLocal').value = ev.local || '';
     document.getElementById('formDesc').value = ev.desc || '';
-    document.getElementById('modalOverlay').classList.add('open');
+    
+    // Mudado de 'open' para 'active' para ligar ao novo CSS
+    document.getElementById('modalOverlay').classList.add('active');
 }
 
 function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('open');
+    // Mudado de 'open' para 'active'
+    document.getElementById('modalOverlay').classList.remove('active');
     document.getElementById('formDate').value = '';
 }
 
 function closeModalOnOverlay(e) {
-    if (e.target === document.getElementById('modalOverlay')) closeModal();
+    // Fecha apenas se clicar fora da caixa branca do formulário
+    if (e.target === document.getElementById('modalOverlay')) {
+        closeModal();
+    }
 }
 
 function saveEvent() {
     const title = document.getElementById('formTitle').value.trim();
     const date = document.getElementById('formDate').value;
-    if (!title || !date) { alert('Preenche o título e a data.'); return; }
+    
+    if (!title || !date) { 
+        alert('Por favor, preenche pelo menos o título e a data da atividade.'); 
+        return; 
+    }
 
     const editingId = document.getElementById('editingId').value;
     const ev = {
         id: editingId || Date.now().toString(),
-        title, date,
+        title: title,
+        date: date,
         time: document.getElementById('formTime').value,
         tipo: document.getElementById('formTipo').value,
         local: document.getElementById('formLocal').value.trim(),
@@ -286,18 +303,23 @@ function saveEvent() {
 
     localStorage.setItem('folclore_events', JSON.stringify(events));
     closeModal();
+    
+    // Atualiza ambas as vistas para refletir as mudanças
     renderCalendar();
     renderAllEvents();
-    showToast(editingId ? 'Atualizado! ✓' : 'Adicionado! ✓');
+    
+    showToast(editingId ? 'Atividade atualizada! ✓' : 'Atividade adicionada! ✓');
 }
 
 function deleteEvent(id) {
-    if (!confirm('Eliminar esta atividade?')) return;
+    if (!confirm('Tens a certeza que queres eliminar esta atividade do calendário?')) return;
+    
     events = events.filter(e => e.id !== id);
     localStorage.setItem('folclore_events', JSON.stringify(events));
+    
     renderCalendar();
     renderAllEvents();
-    showToast('Eliminado.');
+    showToast('Atividade eliminada.');
 }
 
 // ─── UTILITÁRIOS (TOASTS E SEED DATA) ─────────────────────────────────────────
