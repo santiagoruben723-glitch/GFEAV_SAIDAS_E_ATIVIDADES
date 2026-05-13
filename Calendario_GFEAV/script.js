@@ -14,37 +14,31 @@ let currentDate = new Date();
 let currentView = 'month';
 let currentFilter = 'todos';
 
-// ─── GESTÃO DE DEFINIÇÕES ───────────────────────────────────────────────────
+// ─── GESTÃO DE INFORMAÇÕES (SOBRE O GRUPO) ───────────────────────────────────
 
 function applySettings() {
+    // Atualiza o Cabeçalho principal do site
     document.getElementById('groupName').textContent = settings.name;
     document.getElementById('groupSub').textContent = settings.subtitle;
+
+    // Atualiza os textos da nova aba "Sobre" (Estático)
+    // Usamos os IDs que criámos no novo index.html
+    document.getElementById('aboutGroupName').textContent = settings.name;
+    document.getElementById('aboutGroupSub').textContent = settings.subtitle;
+    document.getElementById('aboutText').textContent = settings.about;
+    document.getElementById('aboutLocal').textContent = settings.local;
+    document.getElementById('aboutEmail').textContent = settings.email;
+
+    // Aqui inserimos os contactos diretamente conforme pediste
+    document.getElementById('aboutContactPres').textContent = "919640648";
+    document.getElementById('aboutContactEns').textContent = "919705159";
 
     // Atualiza o título da página e do rodapé
     document.getElementById('footerBrand').textContent = settings.name;
     document.title = settings.name + ' · Calendário';
-
-    // Preenche o formulário de definições
-    document.getElementById('settingName').value = settings.name;
-    document.getElementById('settingSubtitle').value = settings.subtitle;
-    document.getElementById('settingAbout').value = settings.about;
-    document.getElementById('settingLocal').value = settings.local;
-    document.getElementById('settingContact').value = settings.contact;
-    document.getElementById('settingEmail').value = settings.email;
 }
 
-function saveSettings() {
-    settings.name = document.getElementById('settingName').value || settings.name;
-    settings.subtitle = document.getElementById('settingSubtitle').value || settings.subtitle;
-    settings.about = document.getElementById('settingAbout').value || settings.about;
-    settings.local = document.getElementById('settingLocal').value || settings.local;
-    settings.contact = document.getElementById('settingContact').value || settings.contact;
-    settings.email = document.getElementById('settingEmail').value || settings.email;
-
-    localStorage.setItem('folclore_settings', JSON.stringify(settings));
-    applySettings();
-    showToast('Definições guardadas! ✓');
-}
+// A função saveSettings foi eliminada para evitar alterações externas.
 
 // ─── NAVEGAÇÃO ENTRE TABS ────────────────────────────────────────────────────
 
