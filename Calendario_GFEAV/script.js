@@ -67,17 +67,17 @@ function renderCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     document.getElementById('calMonthLabel').textContent = MONTHS[month] + ' ' + year;
-
+    
     const body = document.getElementById('calBody');
     body.innerHTML = '';
-
+    
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const daysInPrev = new Date(year, month, 0).getDate();
     const today = new Date();
-
+    
     let cells = [];
-
+    
     // Dias do mês anterior
     for (let i = firstDay - 1; i >= 0; i--) {
         cells.push({ day: daysInPrev - i, month: month - 1, year, other: true });
@@ -90,21 +90,24 @@ function renderCalendar() {
     while (cells.length % 7 !== 0) {
         cells.push({ day: cells.length - firstDay - daysInMonth + 1, month: month + 1, year, other: true });
     }
-
+    
     cells.forEach(c => {
         const d = new Date(c.year, c.month, c.day);
         const dateStr = d.toISOString().slice(0, 10);
         const dayEvents = events.filter(e => e.date === dateStr);
+        
+        // Esta é a linha que identifica o dia de hoje
         const isToday = d.toDateString() === today.toDateString();
-
+        
         const cell = document.createElement('div');
+        // Adiciona a classe 'today' se for o dia atual
         cell.className = 'cal-cell' + (c.other ? ' other-month' : '') + (isToday ? ' today' : '');
-
+        
         const dateEl = document.createElement('div');
         dateEl.className = 'cal-date';
         dateEl.textContent = c.day;
         cell.appendChild(dateEl);
-
+        
         // Mostrar até 2 eventos como dots/labels
         dayEvents.slice(0, 2).forEach(ev => {
             const dot = document.createElement('span');
@@ -114,7 +117,7 @@ function renderCalendar() {
             dot.onclick = (e) => { e.stopPropagation(); openEditModal(ev.id); };
             cell.appendChild(dot);
         });
-
+        
         if (dayEvents.length > 2) {
             const more = document.createElement('span');
             more.className = 'cal-event-dot';
@@ -122,12 +125,12 @@ function renderCalendar() {
             more.textContent = '+' + (dayEvents.length - 2) + ' mais';
             cell.appendChild(more);
         }
-
+        
         cell.onclick = () => {
             document.getElementById('formDate').value = dateStr;
             openModal();
         };
-
+        
         body.appendChild(cell);
     });
 }
