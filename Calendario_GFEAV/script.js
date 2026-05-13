@@ -17,24 +17,35 @@ let currentFilter = 'todos';
 // ─── GESTÃO DE INFORMAÇÕES (SOBRE O GRUPO) ───────────────────────────────────
 
 function applySettings() {
-    // Atualiza o Cabeçalho principal do site
-    document.getElementById('groupName').textContent = settings.name;
-    document.getElementById('groupSub').textContent = settings.subtitle;
+    // 1. Atualiza o Cabeçalho principal
+    const groupNameEl = document.getElementById('groupName');
+    const groupSubEl = document.getElementById('groupSub');
+    if(groupNameEl) groupNameEl.textContent = settings.name;
+    if(groupSubEl) groupSubEl.textContent = settings.subtitle;
 
-    // Atualiza os textos da nova aba "Sobre" (Estático)
-    // Usamos os IDs que criámos no novo index.html
-    document.getElementById('aboutGroupName').textContent = settings.name;
-    document.getElementById('aboutGroupSub').textContent = settings.subtitle;
-    document.getElementById('aboutText').textContent = settings.about;
-    document.getElementById('aboutLocal').textContent = settings.local;
-    document.getElementById('aboutEmail').textContent = settings.email;
+    // 2. Atualiza os textos da aba "Sobre" (Estático)
+    const aboutName = document.getElementById('aboutGroupName');
+    const aboutSub = document.getElementById('aboutGroupSub');
+    const aboutTxt = document.getElementById('aboutText');
+    const aboutLoc = document.getElementById('aboutLocal');
+    const aboutEm = document.getElementById('aboutEmail');
 
-    // Aqui inserimos os contactos diretamente conforme pediste
-    document.getElementById('aboutContactPres').textContent = "919640648";
-    document.getElementById('aboutContactEns').textContent = "919705159";
+    if(aboutName) aboutName.textContent = settings.name;
+    if(aboutSub) aboutSub.textContent = settings.subtitle;
+    if(aboutTxt) aboutTxt.textContent = settings.about;
+    if(aboutLoc) aboutLoc.textContent = settings.local;
+    if(aboutEm) aboutEm.textContent = settings.email;
 
-    // Atualiza o título da página e do rodapé
-    document.getElementById('footerBrand').textContent = settings.name;
+    // 3. Contactos Diretos (Sérgio e Vítor)
+    const contactPres = document.getElementById('aboutContactPres');
+    const contactEns = document.getElementById('aboutContactEns');
+    if(contactPres) contactPres.textContent = "919640648";
+    if(contactEns) contactEns.textContent = "919705159";
+
+    // 4. Rodapé e Título da Janela
+    const footerBrand = document.getElementById('footerBrand');
+    if(footerBrand) footerBrand.textContent = settings.name;
+
     document.title = settings.name + ' · Calendário';
 }
 
