@@ -296,28 +296,60 @@ main {
     background: var(--cream-dark);
 }
 
+/* ── CÉLULAS DO CALENDÁRIO ── */
 .cal-cell {
     background: var(--white);
-    min-height: 80px;
-    padding: 8px;
+    min-height: 100px; /* Aumentado para dar mais "ar" aos eventos */
+    padding: 10px;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: all 0.2s ease;
     position: relative;
+    border: 0.5px solid var(--linen-dark);
 }
 
-.cal-cell:hover { background: #fdf0e8; }
-.cal-cell.other-month .cal-date { opacity: 0.3; }
+.cal-cell:hover { 
+    background: var(--white-soft); 
+    transform: scale(1.01);
+    z-index: 2;
+}
+
+/* Dias que não pertencem ao mês atual */
+.cal-cell.other-month {
+    background: rgba(244, 238, 224, 0.4); /* Fundo linho muito claro */
+}
+
+.cal-cell.other-month .cal-date { 
+    opacity: 0.3; 
+}
+
+/* ── MARCAÇÃO NATURAL DO DIA ATUAL (HOJE) ── */
+.cal-cell.today {
+    background-color: rgba(201, 150, 42, 0.05); /* Brilho de ouro muito subtil no fundo */
+}
 
 .cal-cell.today .cal-date {
-    background: var(--folk-gold); /* Destaque do dia atual em "ouro" */
-    color: var(--brown-deep);
+    background: var(--folk-gold); /* Cor de ouro das arrecadas */
+    color: white !important;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
+    font-weight: 900;
+    margin-bottom: 5px;
+    /* Sombra suave para parecer uma marca natural no papel/linho */
+    box-shadow: 0 2px 8px rgba(201, 150, 42, 0.3); 
 }
 
+/* ── NÚMERO DO DIA ── */
 .cal-date {
     font-family: 'Cinzel', serif;
     font-weight: 700;
-    color: var(--brown-mid);
+    font-size: 16px;
+    color: var(--brown-deep);
+    margin-bottom: 4px;
+    transition: all 0.2s;
 }
 
 /* ── EVENTOS (DOTS E CARDS) ── */
