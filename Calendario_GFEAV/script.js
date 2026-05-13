@@ -5,7 +5,7 @@ let settings = JSON.parse(localStorage.getItem('folclore_settings') || 'null') |
     name: 'Grupo Folclórico e Etnográfico de Albergaria-a-Velha',
     subtitle: 'Fundado a 1 de janeiro de 1984',
     about: 'Bem-vindo ao nosso grupo de folclore! Somos uma associação cultural dedicada à preservação, estudo e divulgação das tradições, músicas e danças populares da nossa região.',
-    local: 'Largo à Rua Serpa Pinto',
+    local: 'Largo à Rua Serpa Pinto (Antigo Matadouro)',
     contact: '919640648',
     email: 'grupofeav@gmail.com'
 };
