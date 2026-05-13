@@ -686,3 +686,65 @@ footer {
 .tab-section.active { display: block; animation: fadeIn 0.3s ease; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── ESTILOS DA ABA SOBRE (ESTÁTICO) ── */
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background: var(--white-soft);
+    border-radius: 12px;
+    border: 1px solid var(--linen-dark);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 2px solid var(--linen-dark);
+    padding-bottom: 20px;
+}
+
+.about-subtitle {
+    font-style: italic;
+    color: var(--brown-mid);
+    margin-top: 8px;
+    font-size: 1.1rem;
+}
+
+.about-item {
+    margin-bottom: 30px;
+}
+
+.about-item h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--folk-red);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.about-item p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--brown-deep);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Ajuste para telemóveis */
+@media (max-width: 600px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .about-container {
+        padding: 20px;
+    }
+}
